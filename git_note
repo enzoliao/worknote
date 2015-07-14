@@ -2,7 +2,7 @@ Git的结构
 	Git的文件有三种状态：
 		commited 已提交，数据已经安全的保存在本地数据库中
 		modified 已更改，已经修改了文件，但是还没有保存在数据库中
-		staged	 已暂存，对一个已修改文件的当前版本做了标记，使之包含在下次提			      提交的快照中
+		staged	 已暂存，对一个已修改文件的当前版本做了标记，使之包含在下次提交的快照中
 	一个Git项目有三个工作区域：
 	Working Directory	Staging Area	.git directory(Repository)
 	工作目录		暂存区域	Git仓库
@@ -30,9 +30,9 @@ Git基础
 
 	git status 检查当前文件状态,其中的untracked files：表示是没有被跟踪的文件
 		changes to be committed: 表示暂存状态的文件
-		changes not staged for commit: 表示被跟踪文件的内容发生了变化，但未加		     加入暂存区，这时候又可以用git add 将它加入暂存区
+		changes not staged for commit: 表示被跟踪文件的内容发生了变化，但未加入暂存区，这时候又可以用git add 将它加入暂存区
 	
-	cat .gitignore 建立.gitignore文件，列出要忽略的文件模式
+	cat .gitignore 打开.gitignore文件，其中列出要忽略的文件模式
 		*.[oa] 忽略所有以.o .a结尾的文件
 		.gitignore文件采用glob这一shell使用的简化了的正则表达式
 		* 匹配零个或多个任意字符
@@ -47,19 +47,19 @@ Git基础
 	
 	git diff 显示还没暂存的当期工作文件和暂存区域中的快照之间的差异
 	git diff --cached 显示暂存的和上次提交的快照的差异
-	
+	git diff HEAD -- <filename> 查看工作区和库里最新版本的文件的区别.	
 	用 git commit 提交更新
 	用 git commit -a 提交暂存区域， git 会把所有跟踪过的文件暂存并提交
 	
-	git rm xx 从跟踪文件列表中移除xx文件,当删除一个文件时，changes not staged for	     commit 中会出现 deleted: xx， 这时需要用git rm 来记录这一删除操作，提交时这一	  就不再纳入项目管理之中了
+	git rm xx 从跟踪文件列表中移除xx文件,当删除一个文件时，changes not staged for commit 中会出现 deleted: xx， 这时需要用git rm 来记录这一删除操作，提交时这一	  就不再纳入项目管理之中了
 	git rm --cached xx 则是讲一个文件从Git仓库之中删除，但是仍然保留在工作目录
-	git mv file_from file_to 在Git中移动（重命名）文件，相当于同时执行了rm旧文件	    			      git rm旧文件，git add新文件三个操作
+	git mv file_from file_to 在Git中移动（重命名）文件，相当于同时执行了rm旧文件, git rm旧文件，git add新文件三个操作
 	git log显示历史记录，-p显示差异， -2显示最近两次的更新
 			     --stat仅显示增改行数统计
 
 	git commit --amend 使用当前暂存快照提交。当提交完成后，可以加一些文件(git add)，再用这一命令提交，起到忽略之前的错误提交的作用。	
-	git reset HEAD <filename> 取消暂存的文件,回到当前commit的版本，特别的HEAD^代表上一个版本，HEAD^^代表上上个版本
-	git checkout -- <filename> 抛弃文件修改，回到修改之前的版本
+	git reset HEAD <filename> 取消暂存的某一个文件,回到当前commit的版本，特别的HEAD^代表上一个版本，HEAD^^代表上上个版本,<filename>也可以用版本号表示。
+	git checkout -- <filename> 抛弃工作区文件修改，回到修改之前的版本,总之，是返回到上一次git commit 或者 git add时的状态,是一种一键还原。
 	
 	git tag 列出现有标签
 	git tag -a v1.4 -m 'myversion 1.4' 建立一个含有附住类型的标签
@@ -68,8 +68,8 @@ Git基础
 Git分支
 	git branch testing 在当前对象上新建一个分支指针 testing
 	git checkout testing 转换到新建的 testing 分支 -b 新建并切换到该分支
-	git merge <branchname> 合并当前分支与某一分支，当历史只有一条单线时，合并过程		称为fast-foward,如果合并由于冲突失败，git status中会列出unmerged这一栏，用	     =========将两种代码分割开，修改之后通过git add将他们标记为已解决状态（一旦		  暂存，就表示冲突已经结局）
-	git branch -d <branchname> 删除某一分支,但是这一分支没有被合并时会出现错误，		-D强制执行
+	git merge <branchname> 合并当前分支与某一分支，当历史只有一条单线时，合并过程称为fast-foward,如果合并由于冲突失败，git status中会列出unmerged这一栏，用=========将两种代码分割开，修改之后通过git add将他们标记为已解决状态（一旦暂存，就表示冲突已经结局）
+	git branch -d <branchname> 删除某一分支,但是这一分支没有被合并时会出现错误，-D强制执行
 	值得注意的是，git的分支与合并都是在自己本地的Git仓库中进行的，不涉及服务器。
 	git rebase <branchname> 则是相当于用当前分支产生一系列补丁，加在对应分支上
 	merge 与 rebase 产生的效果是一样的，只是提交历史不同
