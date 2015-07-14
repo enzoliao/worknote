@@ -59,3 +59,8 @@ Git基础
 
 	git commit --amend 使用当前暂存快照提交。当提交完成后，可以加一些文件(git add)，再用这一命令提交，起到忽略之前的错误提交的作用。	
 	git reset HEAD <filename> 取消暂存的文件
+	git checkout -- <filename> 抛弃文件修改，回到修改之前的版本
+	
+	git tag 列出现有标签
+	git tag -a v1.4 -m 'myversion 1.4' 建立一个含有附住类型的标签
+	git tag v1.4-lw 建立一个直接给出标签名字的轻量级标签
