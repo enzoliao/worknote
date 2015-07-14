@@ -58,7 +58,7 @@ Git基础
 			     --stat仅显示增改行数统计
 
 	git commit --amend 使用当前暂存快照提交。当提交完成后，可以加一些文件(git add)，再用这一命令提交，起到忽略之前的错误提交的作用。	
-	git reset HEAD <filename> 取消暂存的文件
+	git reset HEAD <filename> 取消暂存的文件,回到当前commit的版本，特别的HEAD^代表上一个版本，HEAD^^代表上上个版本
 	git checkout -- <filename> 抛弃文件修改，回到修改之前的版本
 	
 	git tag 列出现有标签
@@ -67,4 +67,11 @@ Git基础
 
 Git分支
 	git branch testing 在当前对象上新建一个分支指针 testing
-	git checkout testing 转换到新建的 testing 分支
+	git checkout testing 转换到新建的 testing 分支 -b 新建并切换到该分支
+	git merge <branchname> 合并当前分支与某一分支，当历史只有一条单线时，合并过程		称为fast-foward,如果合并由于冲突失败，git status中会列出unmerged这一栏，用	     =========将两种代码分割开，修改之后通过git add将他们标记为已解决状态（一旦		  暂存，就表示冲突已经结局）
+	git branch -d <branchname> 删除某一分支,但是这一分支没有被合并时会出现错误，		-D强制执行
+	值得注意的是，git的分支与合并都是在自己本地的Git仓库中进行的，不涉及服务器。
+	git rebase <branchname> 则是相当于用当前分支产生一系列补丁，加在对应分支上
+	merge 与 rebase 产生的效果是一样的，只是提交历史不同
+	也可以用 git rebase [主分支] [特性分支] 的形式，把特性分支的内容合并到主分支
+	
