@@ -50,3 +50,8 @@ Git基础
 	
 	用 git commit 提交更新
 	用 git commit -a 提交暂存区域， git 会把所有跟踪过的文件暂存并提交
+	
+	git rm xx 从跟踪文件列表中移除xx文件,当删除一个文件时，changes not staged for	     commit 中会出现 deleted: xx， 这时需要用git rm 来记录这一删除操作，提交时这一	  就不再纳入项目管理之中了
+	git rm --cached xx 则是讲一个文件从Git仓库之中删除，但是仍然保留在工作目录
+
+
