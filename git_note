@@ -1,0 +1,46 @@
+Git的结构
+	Git的文件有三种状态：
+		commited 已提交，数据已经安全的保存在本地数据库中
+		modified 已更改，已经修改了文件，但是还没有保存在数据库中
+		staged	 已暂存，对一个已修改文件的当前版本做了标记，使之包含在下次提			      提交的快照中
+	一个Git项目有三个工作区域：
+	Working Directory	Staging Area	.git directory(Repository)
+	工作目录		暂存区域	Git仓库
+	工作目录是对某个项目的一个版本，放在磁盘上供你使用修改
+ 	暂存区域是一个文件，保存了下次要提交的文件列表的信息，有时也叫索引
+	Git仓库记录所有数据，其他计算机克隆一个Git项目时，就克隆这里的数据
+	
+Git运行前的配置：
+	使用git config
+	git config --global user.name "xx" 设定用户名
+	git config --global user.email "xx@qt.fm" 设定用户邮件
+	--global 更改的配置文件默认更改的是用户主目录下的，以后所有的项目都默认使用
+	不加 --global 则是在某个特定的项目中使用这一配置
+	git config --global core.editor emacs 配置系统默认的编辑器，一般是Vim
+	git config --list 列出当前已有的配置信息
+	git config user.name 直接查阅某个环境变量的设定
+	
+
+Git基础  
+	git init 在某一目录下开始使用Git管理
+	git add *.c 加入要被管理的文件,也可以加入要被跟踪的文件夹 
+	git commit -m 'initial project version 'initial this project'
+	
+	git clone git://github.com/schacon/grit.git 克隆一个仓库
+
+	git status 检查当前文件状态,其中的untracked files：表示是没有被跟踪的文件
+		changes to be committed: 表示暂存状态的文件
+		changes not staged for commit: 表示被跟踪文件的内容发生了变化，但未加		     加入暂存区，这时候又可以用git add 将它加入暂存区
+	
+	cat .gitignore 建立.gitignore文件，列出要忽略的文件模式
+		*.[oa] 忽略所有以.o .a结尾的文件
+		.gitignore文件采用glob这一shell使用的简化了的正则表达式
+		* 匹配零个或多个任意字符
+		[abc] 匹配任何一个列在方括号中的字符
+		? 匹配一个任意字符
+		[0-9] 匹配0-9中的任意数字
+		! 除外
+		
+		build/ 忽略build目录下所有文件
+		doc/*.txt 忽略doc/目录下所有以.txt结尾文件，但不嵌套
+		doc/**/*.txt 忽略doc目录下（包括深层目录的）	
