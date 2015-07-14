@@ -45,4 +45,8 @@ Git基础
 		doc/*.txt 忽略doc/目录下所有以.txt结尾文件，但不嵌套
 		doc/**/*.txt 忽略doc目录下（包括深层目录的）	
 	
-	git diff 显示还没
+	git diff 显示还没暂存的当期工作文件和暂存区域中的快照之间的差异
+	git diff --cached 显示暂存的和上次提交的快照的差异
+	
+	用 git commit 提交更新
+	用 git commit -a 提交暂存区域， git 会把所有跟踪过的文件暂存并提交
