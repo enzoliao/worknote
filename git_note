@@ -64,3 +64,7 @@ Git基础
 	git tag 列出现有标签
 	git tag -a v1.4 -m 'myversion 1.4' 建立一个含有附住类型的标签
 	git tag v1.4-lw 建立一个直接给出标签名字的轻量级标签
+
+Git分支
+	git branch testing 在当前对象上新建一个分支指针 testing
+	git checkout testing 转换到新建的 testing 分支
