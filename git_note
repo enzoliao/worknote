@@ -53,5 +53,8 @@ Git基础
 	
 	git rm xx 从跟踪文件列表中移除xx文件,当删除一个文件时，changes not staged for	     commit 中会出现 deleted: xx， 这时需要用git rm 来记录这一删除操作，提交时这一	  就不再纳入项目管理之中了
 	git rm --cached xx 则是讲一个文件从Git仓库之中删除，但是仍然保留在工作目录
+	git mv file_from file_to 在Git中移动（重命名）文件，相当于同时执行了rm旧文件	    			      git rm旧文件，git add新文件三个操作
+	git log显示历史记录，-p显示差异， -2显示最近两次的更新
+			     --stat仅显示增改行数统计
 
-
+	git commit --amend 使用当前暂存快照提交。当提交完成后，可以加一些文件，再用这一命令提交，起到	
