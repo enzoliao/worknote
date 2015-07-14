@@ -57,4 +57,5 @@ Git基础
 	git log显示历史记录，-p显示差异， -2显示最近两次的更新
 			     --stat仅显示增改行数统计
 
-	git commit --amend 使用当前暂存快照提交。当提交完成后，可以加一些文件，再用这一命令提交，起到	
+	git commit --amend 使用当前暂存快照提交。当提交完成后，可以加一些文件(git add)，再用这一命令提交，起到忽略之前的错误提交的作用。	
+	git reset HEAD <filename> 取消暂存的文件
