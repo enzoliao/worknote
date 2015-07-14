@@ -44,3 +44,5 @@ Git基础
 		build/ 忽略build目录下所有文件
 		doc/*.txt 忽略doc/目录下所有以.txt结尾文件，但不嵌套
 		doc/**/*.txt 忽略doc目录下（包括深层目录的）	
+	
+	git diff 显示还没
