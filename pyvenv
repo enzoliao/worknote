@@ -1,0 +1,4 @@
+在项目文件夹下输入 pyvenv <env_name> 创建虚拟环境，自带pop
+进入虚拟环境 source <env_name>/bin/activate
+离开虚拟环境 deactivate
+		
