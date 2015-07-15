@@ -1,4 +1,4 @@
-在项目文件夹下输入 pyvenv <env_name> 创建虚拟环境，自带pop
+在项目文件夹下输入 python3.4 -m venv <env_name> 创建虚拟环境，自带pip
 进入虚拟环境 source <env_name>/bin/activate
 离开虚拟环境 deactivate
 		
