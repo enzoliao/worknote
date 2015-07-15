@@ -1,0 +1,4 @@
+Installing Packages
+	pip install <package_name>
+	pip install <package_name>==1.0.4
+	pip install <package_name> >= 1.0.4
