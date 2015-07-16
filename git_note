@@ -84,5 +84,5 @@ Git远程仓库
         e.g.git remote add origin git@github.com:enzoliao/worknote.git
 	git fetch [shortname] 抓取所有该远程仓库对应的信息
 	git push [remote-name] [local-branch-name] 推送数据到远程仓库
-	
+    git config --global credential.helper cache 记住github https仓库的密码	
 		
