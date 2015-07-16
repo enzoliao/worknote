@@ -81,6 +81,7 @@ Git分支
 Git远程仓库
 	git remote 列出当前所有远程仓库
 	git remote add [shortname] [url] 添加一个新的远程仓库并添加一个别名
+        e.g.git remote add origin git@github.com:enzoliao/worknote.git
 	git fetch [shortname] 抓取所有该远程仓库对应的信息
 	git push [remote-name] [local-branch-name] 推送数据到远程仓库
 	
