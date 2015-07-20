@@ -1,0 +1,21 @@
+handler 
+app.router.add_router('GET', '/', handler)
+
+变量
+@asyncio.coroutine
+def variable_handler(request):
+    return web.Response( text = "hello, {}".format(request.match_info['name']))
+
+app.router.add_route('GET','/{name}', variable_handler)
+
+Named routes
+routes may have names
+app.router.add_route('GET',r'/{user}/info', variable_handler, name= 'handler')
+request.app.router['handler'].url(params={'user':'john_doe'},query='?a=b') >--> '/john_doe/info?a=b'
+
+模板
+@aiohttp_jinja2.template('tmpl.jinja2')
+def handler(request):
+    return {'name':'Andrew', 'surname':'Svetlov'}
+
+

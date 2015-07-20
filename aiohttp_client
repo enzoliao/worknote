@@ -1,0 +1,39 @@
+import aiohttp
+r = yield from aiohttp.request('get','https://github.com/timeline.json')
+r是一个ClientResponse对象的实例
+
+传递参数
+payload = {'key1':'value1', 'key2':'value2'}
+r = yield from aiohttp.request('get','http://httpbin.org/get', params = payload)
+等价于 http://httpbin.org/get?key2=value2&key1=value1
+
+返回内容
+yield from r.text()
+yield from r.read() ( --> binary )
+yield from r.json() ( --> json content)
+
+返回的流
+yield from r.content.read(10)
+r.text()等方法都把返回的内容直接载入了内存，如果对于较大的文件，需要采用ClientResponse.content这一属性，并且通过下面的方式保存：
+with open(filename, 'wb') as fb:
+    while True:
+        chunk = yield from r.content.read(chunk_size)
+        if not chunk:
+            break
+        fd.write(chunk)
+
+加入HTTP header
+r = yield from aiohttp.request('post', url, data = json.dumps(payload), headers = header)
+
+向服务器发送cookies
+r = yield from aiohttp.request('get', url, cookies = cookies)
+
+上传
+with open('massive-body', 'rb') as f:
+    yield from aiohttp.request('post', 'http://some.url/streamed', data = f)
+
+状态码 r.status
+返回的Headers r.headers
+
+过期
+    yield from asyncio.wait_for(aiohttp.request('get', 'http://github.com'), 0.001):
